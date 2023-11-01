@@ -71,3 +71,8 @@ Follow these instructions to get a copy of the project up and running on your lo
 ## Contributing
 
 Contributions are welcome! Please feel free to open an issue or submit a pull request
+
+## License
+
+This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.
+

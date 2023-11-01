@@ -1,8 +1,8 @@
 # PPE Detection using Streamlit
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-[![GitHub stars](https://img.shields.io/github/stars/YourUsername/YourRepository.svg)](https://github.com/Danielowo2000/YourRepository/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/YourUsername/YourRepository.svg)](https://github.com/Danielowo2000/YourRepository/issues)
+[![GitHub stars](https://img.shields.io/github/stars/YourUsername/YourRepository.svg)](https://github.com/Danielowo2000/PPE-Detection-model/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/YourUsername/YourRepository.svg)](https://github.com/Danielowo2000/PPE-Detection-model/issues)
 
 A real-time Personal Protective Equipment (PPE) detection application built with Streamlit and YOLOv8.
 

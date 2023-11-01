@@ -21,7 +21,7 @@ A real-time Personal Protective Equipment (PPE) detection application built with
 
 ## About
 
-This project is designed to detect and highlight individuals wearing or not wearing specific PPE items, such as helmets, gloves, vests, etc. It utilizes the YOLOv8 model for object detection and is powered by Streamlit for the user interface. The application supports both webcam input and file upload for image and video analysis.
+This project is designed to detect and highlight individuals wearing or not wearing specific PPE items, such as helmets, gloves, vests and boots. It utilizes the YOLOv8 model for object detection and is powered by Streamlit for the user interface. The application supports both webcam input and file upload for image and video analysis.
 
 ## Features
 

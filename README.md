@@ -1,8 +1,8 @@
 # PPE Detection using Streamlit
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-[![GitHub stars](https://img.shields.io/github/stars/YourUsername/YourRepository.svg)](https://github.com/YourUsername/YourRepository/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/YourUsername/YourRepository.svg)](https://github.com/YourUsername/YourRepository/issues)
+[![GitHub stars](https://img.shields.io/github/stars/YourUsername/YourRepository.svg)](https://github.com/Danielowo2000/YourRepository/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/YourUsername/YourRepository.svg)](https://github.com/Danielowo2000/YourRepository/issues)
 
 A real-time Personal Protective Equipment (PPE) detection application built with Streamlit and YOLOv8.
 
@@ -37,7 +37,7 @@ Follow these instructions to get a copy of the project up and running on your lo
 
 ### Prerequisites
 
-- Python 3.6+
+- Python 3.9+
 - pip (Python package manager)
 
 ### Installation

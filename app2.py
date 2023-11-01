@@ -96,4 +96,78 @@ class VideoTransformer(VideoTransformerBase):
 webrtc_streamer(key="example", video_transformer_factory=VideoTransformer)
 
 # Rest of your code for handling file uploads
-# ...
+if input_type == "File Upload":
+    if uploaded_file is not None:
+        if uploaded_file.type == "image/jpeg" or uploaded_file.type == "image/png":
+            img = cv2.imdecode(np.fromstring(uploaded_file.read(), np.uint8), 1)
+            results = model(img, conf=confidence_threshold)
+
+            # Create a Streamlit column for layout
+            col1, col2 = st.columns(2)
+            
+            col1.image(img, channels="BGR")
+            for r in results:
+                boxes = r.boxes
+                for box in boxes:
+                    x1, y1, x2, y2 = box.xyxy[0]
+                    w, h = x2 - x1, y2 - y1
+                    x1, y1, w, h = int(x1), int(y1), int(w), int(h)
+                    cvzone.cornerRect(img, (x1, y1, w, h))
+                    conf = (math.ceil(box.conf[0] * 100)) / 100
+                    cls = int(box.cls[0])
+                    cvzone.putTextRect(img, f'{classNames[cls]} {conf}', (max(0, x1), max(35, y1)), scale=1,
+                                       thickness=1)
+
+            col2.image(img, channels="BGR")
+
+        elif uploaded_file.type == "video/mp4":
+            temp_video_path = os.path.join("processed_video.mp4")
+
+            with open("temp_video.mp4", "wb") as f:
+                f.write(uploaded_file.read())
+            cap = cv2.VideoCapture("temp_video.mp4")
+
+            # Initialize the video writer
+            fourcc = cv2.VideoWriter_fourcc(*'avc1')
+            width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+            height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+            fps = int(cap.get(cv2.CAP_PROP_FPS))
+            out = cv2.VideoWriter(temp_video_path, fourcc, fps, (width, height))
+
+            # Create a Streamlit column for layout
+            col1, col2 = st.columns(2)
+
+            while True:
+                success, img = cap.read()
+                if not success:
+                    break
+                results = model(img, conf=confidence_threshold)
+
+                for r in results:
+                    boxes = r.boxes
+                    for box in boxes:
+                        x1, y1, x2, y2 = box.xyxy[0]
+                        w, h = x2 - x1, y2 - y1
+                        x1, y1, w, h = int(x1), int(y1), int(w), int(h)
+                        cvzone.cornerRect(img, (x1, y1, w, h))
+                        conf = (math.ceil(box.conf[0] * 100)) / 100
+                        cls = int(box.cls[0])
+                        cvzone.putTextRect(img, f'{classNames[cls]} {conf}', (max(0, x1), max(35, y1)), scale=1,
+                                           thickness=1)
+
+                # Write the frame to the video
+                out.write(img)
+
+            # Release the video writer
+            out.release()
+
+            # Display the original video in the first column
+            col1.video("temp_video.mp4")
+
+            # Read the processed video as bytes
+            with open(temp_video_path, 'rb') as output_vid:
+                out_bytes = output_vid.read()
+
+                # Display the processed video using st.video
+                col2.video(out_bytes)
+

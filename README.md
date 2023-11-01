@@ -6,7 +6,7 @@
 
 A real-time Personal Protective Equipment (PPE) detection application built with Streamlit and YOLOv8.
 
-![Project Demo](./demo.png)
+![Project Demo](./Picture1.png)
 
 ## Table of Contents
 
